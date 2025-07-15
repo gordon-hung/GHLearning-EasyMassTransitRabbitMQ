@@ -1,5 +1,7 @@
 # GHLearning-EasyMassTransitRabbitMQ
 
+[![.NET](https://github.com/gordon-hung/GHLearning-EasyMassTransitRabbitMQ/actions/workflows/dotnet.yml/badge.svg)](https://github.com/gordon-hung/GHLearning-EasyMassTransitRabbitMQ/actions/workflows/dotnet.yml)
+
 RabbitMQ is an open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP). It is written in the Erlang programming language and is built on the Open Telecom Platform framework for clustering and failover.
 
 RabbitMQ can be used to decouple and distribute systems by sending messages between them. It supports a variety of messaging patterns, including point-to-point, publish/subscribe, and request/response.
