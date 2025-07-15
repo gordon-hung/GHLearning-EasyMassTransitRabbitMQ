@@ -1,0 +1,6 @@
+@GHLearning.EasyMassTransitRabbitMQ.FanoutServer_HostAddress = http://localhost:5124
+
+GET {{GHLearning.EasyMassTransitRabbitMQ.FanoutServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

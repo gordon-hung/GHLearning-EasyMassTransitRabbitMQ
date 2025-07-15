@@ -1,0 +1,95 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36127.28 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "direct", "direct", "{5D26D74D-C57B-416A-B596-CBE294D984E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.DirectServer", "src\direct\GHLearning.EasyMassTransitRabbitMQ.DirectServer\GHLearning.EasyMassTransitRabbitMQ.DirectServer.csproj", "{545945B0-A709-4DC2-9A75-961176E2C7AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.DirectClient", "src\direct\GHLearning.EasyMassTransitRabbitMQ.DirectClient\GHLearning.EasyMassTransitRabbitMQ.DirectClient.csproj", "{788E311C-71BC-4969-BF1F-67039414AF80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.DirectMessage", "src\direct\GHLearning.EasyMassTransitRabbitMQ.DirectMessage\GHLearning.EasyMassTransitRabbitMQ.DirectMessage.csproj", "{97B2F843-99A6-4294-A5CD-43227EA7C2D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "topic", "topic", "{E9119248-0BD8-4799-8675-C1AF1EEE8BB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.TopicClient", "src\topic\GHLearning.EasyMassTransitRabbitMQ.TopicClient\GHLearning.EasyMassTransitRabbitMQ.TopicClient.csproj", "{61B326B5-3094-4D21-9BBF-0E6DA3C813BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.TopicServer", "src\topic\GHLearning.EasyMassTransitRabbitMQ.TopicServer\GHLearning.EasyMassTransitRabbitMQ.TopicServer.csproj", "{4067CA9B-8094-4218-B521-99F55CE91C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.TopicMessage", "src\topic\GHLearning.EasyMassTransitRabbitMQ.TopicMessage\GHLearning.EasyMassTransitRabbitMQ.TopicMessage.csproj", "{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fanout", "fanout", "{66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FanoutClient", "src\fanout\GHLearning.EasyMassTransitRabbitMQ.FanoutClient\GHLearning.EasyMassTransitRabbitMQ.FanoutClient.csproj", "{92E66992-2C41-4B13-82DD-D9DDD345FC56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FanoutServer", "src\fanout\GHLearning.EasyMassTransitRabbitMQ.FanoutServer\GHLearning.EasyMassTransitRabbitMQ.FanoutServer.csproj", "{00B96C56-59A0-45CD-A644-BEF92A871424}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FanoutMessage", "src\fanout\GHLearning.EasyMassTransitRabbitMQ.FanoutMessage\GHLearning.EasyMassTransitRabbitMQ.FanoutMessage.csproj", "{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{545945B0-A709-4DC2-9A75-961176E2C7AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545945B0-A709-4DC2-9A75-961176E2C7AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545945B0-A709-4DC2-9A75-961176E2C7AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545945B0-A709-4DC2-9A75-961176E2C7AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{788E311C-71BC-4969-BF1F-67039414AF80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{788E311C-71BC-4969-BF1F-67039414AF80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{788E311C-71BC-4969-BF1F-67039414AF80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{788E311C-71BC-4969-BF1F-67039414AF80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B2F843-99A6-4294-A5CD-43227EA7C2D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B2F843-99A6-4294-A5CD-43227EA7C2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B2F843-99A6-4294-A5CD-43227EA7C2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B2F843-99A6-4294-A5CD-43227EA7C2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B326B5-3094-4D21-9BBF-0E6DA3C813BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B326B5-3094-4D21-9BBF-0E6DA3C813BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B326B5-3094-4D21-9BBF-0E6DA3C813BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B326B5-3094-4D21-9BBF-0E6DA3C813BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4067CA9B-8094-4218-B521-99F55CE91C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4067CA9B-8094-4218-B521-99F55CE91C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4067CA9B-8094-4218-B521-99F55CE91C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4067CA9B-8094-4218-B521-99F55CE91C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E66992-2C41-4B13-82DD-D9DDD345FC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E66992-2C41-4B13-82DD-D9DDD345FC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E66992-2C41-4B13-82DD-D9DDD345FC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E66992-2C41-4B13-82DD-D9DDD345FC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B96C56-59A0-45CD-A644-BEF92A871424}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B96C56-59A0-45CD-A644-BEF92A871424}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B96C56-59A0-45CD-A644-BEF92A871424}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B96C56-59A0-45CD-A644-BEF92A871424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D26D74D-C57B-416A-B596-CBE294D984E9} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{545945B0-A709-4DC2-9A75-961176E2C7AA} = {5D26D74D-C57B-416A-B596-CBE294D984E9}
+		{788E311C-71BC-4969-BF1F-67039414AF80} = {5D26D74D-C57B-416A-B596-CBE294D984E9}
+		{97B2F843-99A6-4294-A5CD-43227EA7C2D0} = {5D26D74D-C57B-416A-B596-CBE294D984E9}
+		{E9119248-0BD8-4799-8675-C1AF1EEE8BB4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{61B326B5-3094-4D21-9BBF-0E6DA3C813BC} = {E9119248-0BD8-4799-8675-C1AF1EEE8BB4}
+		{4067CA9B-8094-4218-B521-99F55CE91C31} = {E9119248-0BD8-4799-8675-C1AF1EEE8BB4}
+		{C68F3BE1-D1CF-41F1-A12A-2D67BF63DA26} = {E9119248-0BD8-4799-8675-C1AF1EEE8BB4}
+		{66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{92E66992-2C41-4B13-82DD-D9DDD345FC56} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
+		{00B96C56-59A0-45CD-A644-BEF92A871424} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
+		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {362334B0-557D-419D-86E5-79C8E875DBA9}
+	EndGlobalSection
+EndGlobal
