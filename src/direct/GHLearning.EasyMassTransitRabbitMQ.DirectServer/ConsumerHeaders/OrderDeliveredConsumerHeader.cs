@@ -11,8 +11,8 @@ public class OrderDeliveredConsumerHeader(
 	public async Task Consume(ConsumeContext<OrderMessage> context)
 	{
 		logger.LogInformation("""
-			LogAt:{logAt} 
-			Id:{id} 
+			LogAt:{logAt}
+			Id:{id}
 			Status:{status}
 			""",
 			timeProvider.GetUtcNow(),
@@ -26,10 +26,10 @@ public class OrderDeliveredConsumerHeader(
 
 		await bus.Publish(
 			new OrderMessage
-		   {
-			   Id = context.Message.Id,
-			   Status = OrderStatus.Completed
-		   },
+			{
+				Id = context.Message.Id,
+				Status = OrderStatus.Completed
+			},
 			context.CancellationToken)
 		   .ConfigureAwait(false);
 	}

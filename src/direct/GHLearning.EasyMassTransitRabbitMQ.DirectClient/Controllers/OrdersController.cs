@@ -3,6 +3,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GHLearning.EasyMassTransitRabbitMQ.DirectClient.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class OrdersController(

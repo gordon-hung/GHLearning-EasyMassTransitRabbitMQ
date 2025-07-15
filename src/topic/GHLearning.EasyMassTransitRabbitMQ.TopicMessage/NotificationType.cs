@@ -1,4 +1,5 @@
 ﻿namespace GHLearning.EasyMassTransitRabbitMQ.TopicMessage;
+
 public enum NotificationType
 {
 	Personal = 1,  // 個人

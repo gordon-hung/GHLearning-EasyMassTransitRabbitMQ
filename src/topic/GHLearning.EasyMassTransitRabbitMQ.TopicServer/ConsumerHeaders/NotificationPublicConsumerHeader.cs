@@ -10,13 +10,13 @@ public class NotificationPublicConsumerHeader(
 	public async Task Consume(ConsumeContext<NotificationMessage> context)
 	{
 		logger.LogInformation("""
-			LogAt:{logAt} 
-			Id:{id} 
-			Sender:{sender} 
-			Region:{region} 
-			Group:{group} 
-			User:{user} 
-			Type:{type} 
+			LogAt:{logAt}
+			Id:{id}
+			Sender:{sender}
+			Region:{region}
+			Group:{group}
+			User:{user}
+			Type:{type}
 			Medium:{medium}
 			Message:{message}
 			""",

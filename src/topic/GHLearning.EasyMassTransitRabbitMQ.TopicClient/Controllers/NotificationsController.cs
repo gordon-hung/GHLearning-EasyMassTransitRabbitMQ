@@ -4,6 +4,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GHLearning.EasyMassTransitRabbitMQ.TopicClient.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class NotificationsController(

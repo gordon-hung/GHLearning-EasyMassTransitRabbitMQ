@@ -4,7 +4,6 @@ namespace GHLearning.EasyMassTransitRabbitMQ.TopicClient.ViewModels;
 
 public record NotificationGroupViewModel
 {
-
 	// 發送者名稱或發送者 ID，代表發送通知的人或系統
 	public string Sender { get; set; } = default!;
 

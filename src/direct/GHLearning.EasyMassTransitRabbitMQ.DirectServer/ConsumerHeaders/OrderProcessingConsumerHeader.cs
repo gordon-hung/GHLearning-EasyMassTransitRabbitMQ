@@ -11,8 +11,8 @@ public class OrderProcessingConsumerHeader(
 	public async Task Consume(ConsumeContext<OrderMessage> context)
 	{
 		logger.LogInformation("""
-			LogAt:{logAt} 
-			Id:{id} 
+			LogAt:{logAt}
+			Id:{id}
 			Status:{status}
 			""",
 			timeProvider.GetUtcNow(),

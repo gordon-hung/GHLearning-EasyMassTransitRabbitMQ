@@ -1,9 +1,10 @@
-using System.Net.Mime;
+﻿using System.Net.Mime;
 using System.Text.Json.Serialization;
 using CorrelationId;
 using GHLearning.EasyMassTransitRabbitMQ.TopicMessage;
 using MassTransit;
 using MassTransit.Logging;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -101,8 +102,17 @@ builder.Services.AddOpenTelemetry()
 				!httpContext.Request.Path.StartsWithSegments("/scalar", StringComparison.OrdinalIgnoreCase)));
 
 //Learn more about configuring HealthChecks at https://learn.microsoft.com/zh-tw/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-9.0
-builder.Services.AddHealthChecks()
-	.AddCheck("self", () => HealthCheckResult.Healthy(), tags: ["live"]);
+builder.Services
+	.AddHealthChecks()
+	.AddCheck("self", () => HealthCheckResult.Healthy(), ["live"])
+	.AddRabbitMQ(sp =>
+	{
+		var factory = new ConnectionFactory
+		{
+			Uri = new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!)
+		};
+		return factory.CreateConnectionAsync();
+	});
 
 var app = builder.Build();
 
@@ -123,7 +133,29 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Prometheus ���ѪA�ȼƾڸ�Ʒ�
+app.MapHealthChecks("/live", new HealthCheckOptions
+{
+	Predicate = check => check.Tags.Contains("live"),
+	ResultStatusCodes =
+	{
+		[HealthStatus.Healthy] = StatusCodes.Status200OK,
+		[HealthStatus.Degraded] = StatusCodes.Status200OK,
+		[HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+	}
+});
+
+app.MapHealthChecks("/healthz", new HealthCheckOptions
+{
+	Predicate = _ => true,
+	ResultStatusCodes =
+	{
+		[HealthStatus.Healthy] = StatusCodes.Status200OK,
+		[HealthStatus.Degraded] = StatusCodes.Status200OK,
+		[HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
+	}
+});
+
+// Prometheus 提供服務數據資料源
 app.MapMetrics();
 app.UseHttpMetrics();
 

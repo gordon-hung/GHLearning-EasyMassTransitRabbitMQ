@@ -10,9 +10,9 @@ public class LoginAlertConsumerHeader(
 	public Task Consume(ConsumeContext<LoginMessage> context)
 	{
 		logger.LogInformation("""
-			LogAt:{logAt} 
-			Id:{id} 
-			User:{user} 
+			LogAt:{logAt}
+			Id:{id}
+			User:{user}
 			""",
 			timeProvider.GetUtcNow(),
 			context.Message.Id,
