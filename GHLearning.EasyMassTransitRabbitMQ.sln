@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36127.28 d17.14
+VisualStudioVersion = 17.14.36127.28
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -28,6 +28,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FanoutServer", "src\fanout\GHLearning.EasyMassTransitRabbitMQ.FanoutServer\GHLearning.EasyMassTransitRabbitMQ.FanoutServer.csproj", "{00B96C56-59A0-45CD-A644-BEF92A871424}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FanoutMessage", "src\fanout\GHLearning.EasyMassTransitRabbitMQ.FanoutMessage\GHLearning.EasyMassTransitRabbitMQ.FanoutMessage.csproj", "{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "requestResponse", "requestResponse", "{63F138F6-B041-42E0-A207-F78BF4421E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.RequestResponseClient", "src\requestResponse\GHLearning.EasyMassTransitRabbitMQ.RequestResponseClient\GHLearning.EasyMassTransitRabbitMQ.RequestResponseClient.csproj", "{DDB350D5-BFE8-481D-849F-4799FA35AA06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer", "src\requestResponse\GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer\GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer.csproj", "{3981A4B8-8D1F-4E70-B56F-5BFC751AA385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.RequestResponseMessage", "src\requestResponse\GHLearning.EasyMassTransitRabbitMQ.RequestResponseMessage\GHLearning.EasyMassTransitRabbitMQ.RequestResponseMessage.csproj", "{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +79,18 @@ Global
 		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDB350D5-BFE8-481D-849F-4799FA35AA06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDB350D5-BFE8-481D-849F-4799FA35AA06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDB350D5-BFE8-481D-849F-4799FA35AA06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDB350D5-BFE8-481D-849F-4799FA35AA06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3981A4B8-8D1F-4E70-B56F-5BFC751AA385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3981A4B8-8D1F-4E70-B56F-5BFC751AA385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3981A4B8-8D1F-4E70-B56F-5BFC751AA385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3981A4B8-8D1F-4E70-B56F-5BFC751AA385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +108,10 @@ Global
 		{92E66992-2C41-4B13-82DD-D9DDD345FC56} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
 		{00B96C56-59A0-45CD-A644-BEF92A871424} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
 		{8AA0EBB1-A94D-4CA9-8BAE-682A0360A1D8} = {66C09A4C-48D3-44D7-9AD4-5C6BCF285ECE}
+		{63F138F6-B041-42E0-A207-F78BF4421E8C} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{DDB350D5-BFE8-481D-849F-4799FA35AA06} = {63F138F6-B041-42E0-A207-F78BF4421E8C}
+		{3981A4B8-8D1F-4E70-B56F-5BFC751AA385} = {63F138F6-B041-42E0-A207-F78BF4421E8C}
+		{1EEE9FB5-773F-4A30-A1D8-9CD11C17282F} = {63F138F6-B041-42E0-A207-F78BF4421E8C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {362334B0-557D-419D-86E5-79C8E875DBA9}
