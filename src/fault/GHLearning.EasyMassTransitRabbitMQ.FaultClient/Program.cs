@@ -42,14 +42,14 @@ builder.Services.AddMassTransit(registrationConfigurator => registrationConfigur
 
 	var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order";
 
-	configurator.Message<OrderMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
-	configurator.Publish<OrderMessage>(e =>
+	configurator.Message<OrderDepositFormMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
+	configurator.Publish<OrderDepositFormMessage>(e =>
 	{
 		e.Durable = true; // default: true
 		e.AutoDelete = false; // default: false
 		e.ExchangeType = ExchangeType.Direct; // default: direct
 	});
-	configurator.Send<OrderMessage>(e =>
+	configurator.Send<OrderDepositFormMessage>(e =>
 		// multiple conventions can be set, in this case also CorrelationId
 		e.UseCorrelationId(context => context.OrderId));
 }));

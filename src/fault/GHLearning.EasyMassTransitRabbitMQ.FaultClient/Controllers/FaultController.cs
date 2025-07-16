@@ -10,12 +10,13 @@ public class FaultController(
 	IBus bus,
 	TimeProvider timeProvider) : ControllerBase
 {
-	[HttpPost()]
-	public Task PublishAsync()
+	[HttpPost("Deposit/Form")]
+	public Task DepositFormAsync()
 		=> bus.Publish(
-			message: new OrderMessage
+			message: new OrderDepositFormMessage
 			{
 				OrderId = Guid.CreateVersion7(timeProvider.GetUtcNow())
 			},
 			cancellationToken: HttpContext.RequestAborted);
+
 }

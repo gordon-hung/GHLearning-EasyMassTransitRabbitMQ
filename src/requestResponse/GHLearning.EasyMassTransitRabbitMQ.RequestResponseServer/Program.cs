@@ -69,10 +69,7 @@ builder.Services.AddMassTransit(registrationConfigurator =>
 				endpointConfigurator.DiscardFaultedMessages();
 				endpointConfigurator.Bind(
 					exchangeName: exchangeName,
-					callback: s =>
-					{
-						s.ExchangeType = ExchangeType.Direct;
-					});
+					callback: s => s.ExchangeType = ExchangeType.Direct);
 			});
 	});
 });

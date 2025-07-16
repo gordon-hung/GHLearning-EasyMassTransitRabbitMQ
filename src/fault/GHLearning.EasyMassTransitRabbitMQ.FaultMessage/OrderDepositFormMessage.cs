@@ -1,6 +1,6 @@
 ﻿namespace GHLearning.EasyMassTransitRabbitMQ.FaultMessage;
 
-public record OrderMessage
+public record OrderDepositFormMessage
 {
 	public Guid OrderId { get; set; }
 }

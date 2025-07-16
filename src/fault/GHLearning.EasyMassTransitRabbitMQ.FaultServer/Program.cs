@@ -48,16 +48,16 @@ builder.Services.AddMassTransit(registrationConfigurator =>
 
 		var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order";
 
-		var queueName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order.Queue";
+		var queueName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order.Deposit";
 
-		configurator.Message<OrderMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
-		configurator.Publish<OrderMessage>(e =>
+		configurator.Message<OrderDepositFormMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
+		configurator.Publish<OrderDepositFormMessage>(e =>
 		{
 			e.Durable = true; // default: true
 			e.AutoDelete = false; // default: false
 			e.ExchangeType = ExchangeType.Direct; // default: direct
 		});
-		configurator.Send<OrderMessage>(e =>
+		configurator.Send<OrderDepositFormMessage>(e =>
 			// multiple conventions can be set, in this case also CorrelationId
 			e.UseCorrelationId(context => context.OrderId));
 
@@ -67,8 +67,8 @@ builder.Services.AddMassTransit(registrationConfigurator =>
 			{
 				endpointConfigurator.SetQuorumQueue();
 				endpointConfigurator.UseMessageRetry(r => r.Incremental(3, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2)));
-				endpointConfigurator.Consumer<OrderConsumerHeader>(context);
-				endpointConfigurator.Consumer<FaultOrderConsumerHeader>(context);
+				endpointConfigurator.Consumer<OrderDepositFormConsumerHeader>(context);
+				endpointConfigurator.Consumer<OrderDepositFormFaultConsumerHeader>(context);
 				endpointConfigurator.DiscardFaultedMessages();
 				endpointConfigurator.Bind(
 					exchangeName: exchangeName,

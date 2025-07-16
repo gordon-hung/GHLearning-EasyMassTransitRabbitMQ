@@ -3,11 +3,11 @@ using MassTransit;
 
 namespace GHLearning.EasyMassTransitRabbitMQ.FaultServer.ConsumerHeaders;
 
-public class OrderConsumerHeader(
-	ILogger<OrderConsumerHeader> logger,
-	TimeProvider timeProvider) : IConsumer<OrderMessage>
+public class OrderDepositFormConsumerHeader(
+	ILogger<OrderDepositFormConsumerHeader> logger,
+	TimeProvider timeProvider) : IConsumer<OrderDepositFormMessage>
 {
-	public Task Consume(ConsumeContext<OrderMessage> context)
+	public Task Consume(ConsumeContext<OrderDepositFormMessage> context)
 	{
 		logger.LogInformation("""
 			LogAt:{logAt}
@@ -15,6 +15,7 @@ public class OrderConsumerHeader(
 			""",
 			timeProvider.GetUtcNow(),
 			context.Message.OrderId);
+
 		return Task.FromException(new NotImplementedException());
 	}
 }
