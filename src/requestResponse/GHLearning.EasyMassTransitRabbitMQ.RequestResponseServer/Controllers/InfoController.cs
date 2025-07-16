@@ -3,7 +3,7 @@ using System.Net.Sockets;
 using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GHLearning.EasyMassTransitRabbitMQ.FanoutClient.Controllers;
+namespace GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer.Controllers;
 
 [Route("[controller]")]
 [ApiController]

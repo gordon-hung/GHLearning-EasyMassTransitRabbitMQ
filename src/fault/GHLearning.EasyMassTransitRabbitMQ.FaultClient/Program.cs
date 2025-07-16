@@ -1,9 +1,7 @@
 ﻿using System.Net.Mime;
-using System.Reflection;
 using System.Text.Json.Serialization;
 using CorrelationId;
-using GHLearning.EasyMassTransitRabbitMQ.RequestResponseMessage;
-using GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer.ConsumerHeaders;
+using GHLearning.EasyMassTransitRabbitMQ.FaultMessage;
 using MassTransit;
 using MassTransit.Logging;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -38,44 +36,23 @@ builder.Services.AddSingleton(TimeProvider.System);
 builder.Services.AddOpenApi();
 
 // Learn more about configuring  MassTransit.RabbitMQ at https://masstransit.io/documentation/transports/rabbitmq
-builder.Services.AddMassTransit(registrationConfigurator =>
+builder.Services.AddMassTransit(registrationConfigurator => registrationConfigurator.UsingRabbitMq((context, configurator) =>
 {
-	registrationConfigurator.AddConsumers(Assembly.GetEntryAssembly());
-	registrationConfigurator.UsingRabbitMq((context, configurator) =>
+	configurator.Host(new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!));
+
+	var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order";
+
+	configurator.Message<OrderMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
+	configurator.Publish<OrderMessage>(e =>
 	{
-		configurator.Host(new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!));
-
-		var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.RequestResponse";
-
-		configurator.Message<RequestMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
-		configurator.Publish<RequestMessage>(e =>
-		{
-			e.Durable = true; // default: true
-			e.AutoDelete = false; // default: false
-			e.ExchangeType = ExchangeType.Direct;
-		});
-		configurator.Send<RequestMessage>(e =>
-			// multiple conventions can be set, in this case also CorrelationId
-			e.UseCorrelationId(context => context.Id));
-
-		configurator.ReceiveEndpoint(
-			queueName: $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.RequestResponse.Message",
-			configureEndpoint: endpointConfigurator =>
-			{
-				endpointConfigurator.ConfigureConsumeTopology = false;
-				endpointConfigurator.SetQuorumQueue();
-				endpointConfigurator.UseMessageRetry(r => r.Incremental(3, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10)));
-				endpointConfigurator.Consumer<RequestResponseConsumerHeader>(context);
-				endpointConfigurator.DiscardFaultedMessages();
-				endpointConfigurator.Bind(
-					exchangeName: exchangeName,
-					callback: s =>
-					{
-						s.ExchangeType = ExchangeType.Direct;
-					});
-			});
+		e.Durable = true; // default: true
+		e.AutoDelete = false; // default: false
+		e.ExchangeType = ExchangeType.Direct; // default: direct
 	});
-});
+	configurator.Send<OrderMessage>(e =>
+		// multiple conventions can be set, in this case also CorrelationId
+		e.UseCorrelationId(context => context.OrderId));
+}));
 
 //Learn more about configuring HttpLogging at https://learn.microsoft.com/en-us/aspnet/core/fundamentals/http-logging/?view=aspnetcore-8.0
 builder.Services.AddHttpLogging(logging =>

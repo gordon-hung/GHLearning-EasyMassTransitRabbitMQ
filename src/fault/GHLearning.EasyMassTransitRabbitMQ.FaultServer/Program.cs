@@ -2,8 +2,8 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
 using CorrelationId;
-using GHLearning.EasyMassTransitRabbitMQ.RequestResponseMessage;
-using GHLearning.EasyMassTransitRabbitMQ.RequestResponseServer.ConsumerHeaders;
+using GHLearning.EasyMassTransitRabbitMQ.FaultMessage;
+using GHLearning.EasyMassTransitRabbitMQ.FaultServer.ConsumerHeaders;
 using MassTransit;
 using MassTransit.Logging;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -41,38 +41,38 @@ builder.Services.AddOpenApi();
 builder.Services.AddMassTransit(registrationConfigurator =>
 {
 	registrationConfigurator.AddConsumers(Assembly.GetEntryAssembly());
+
 	registrationConfigurator.UsingRabbitMq((context, configurator) =>
 	{
 		configurator.Host(new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!));
 
-		var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.RequestResponse";
+		var exchangeName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order";
 
-		configurator.Message<RequestMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
-		configurator.Publish<RequestMessage>(e =>
+		var queueName = $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.Fault.Order.Queue";
+
+		configurator.Message<OrderMessage>(e => e.SetEntityName(exchangeName)); // name of the primary exchange
+		configurator.Publish<OrderMessage>(e =>
 		{
 			e.Durable = true; // default: true
 			e.AutoDelete = false; // default: false
-			e.ExchangeType = ExchangeType.Direct;
+			e.ExchangeType = ExchangeType.Direct; // default: direct
 		});
-		configurator.Send<RequestMessage>(e =>
+		configurator.Send<OrderMessage>(e =>
 			// multiple conventions can be set, in this case also CorrelationId
-			e.UseCorrelationId(context => context.Id));
+			e.UseCorrelationId(context => context.OrderId));
 
 		configurator.ReceiveEndpoint(
-			queueName: $"{builder.Environment.EnvironmentName}.GHLearning.EasyMassTransitRabbitMQ.RequestResponse.Message",
+			queueName: queueName,
 			configureEndpoint: endpointConfigurator =>
 			{
-				endpointConfigurator.ConfigureConsumeTopology = false;
 				endpointConfigurator.SetQuorumQueue();
-				endpointConfigurator.UseMessageRetry(r => r.Incremental(3, TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(10)));
-				endpointConfigurator.Consumer<RequestResponseConsumerHeader>(context);
+				endpointConfigurator.UseMessageRetry(r => r.Incremental(3, TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(2)));
+				endpointConfigurator.Consumer<OrderConsumerHeader>(context);
+				endpointConfigurator.Consumer<FaultOrderConsumerHeader>(context);
 				endpointConfigurator.DiscardFaultedMessages();
 				endpointConfigurator.Bind(
 					exchangeName: exchangeName,
-					callback: s =>
-					{
-						s.ExchangeType = ExchangeType.Direct;
-					});
+					callback: s => s.ExchangeType = ExchangeType.Direct);
 			});
 	});
 });

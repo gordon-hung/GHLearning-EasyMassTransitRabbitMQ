@@ -3,13 +3,14 @@ using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GHLearning.EasyMassTransitRabbitMQ.RequestResponseClient.Controllers;
+
 [Route("api/[controller]")]
 [ApiController]
 public class RequestResponseController(
 	TimeProvider timeProvider) : ControllerBase
 {
 	[HttpPost]
-	public async Task<ResponseMessage> CreatedAsync(
+	public async Task<ResponseMessage> RequestResponseAsync(
 		[FromServices] IRequestClient<RequestMessage> client)
 	{
 		var request = client.Create(

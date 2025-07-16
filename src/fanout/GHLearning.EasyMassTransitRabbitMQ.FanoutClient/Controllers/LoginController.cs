@@ -12,7 +12,7 @@ public class LoginController(
 	TimeProvider timeProvider) : ControllerBase
 {
 	[HttpPost()]
-	public Task NotificationGroupAsync(
+	public Task LoginAsync(
 		[FromBody] LoginViewModel source)
 		=> bus.Publish(
 			message: new LoginMessage

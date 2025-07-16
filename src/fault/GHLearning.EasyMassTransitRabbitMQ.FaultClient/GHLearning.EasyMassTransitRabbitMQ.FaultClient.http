@@ -1,0 +1,6 @@
+@GHLearning.EasyMassTransitRabbitMQ.FaultClient_HostAddress = http://localhost:5051
+
+GET {{GHLearning.EasyMassTransitRabbitMQ.FaultClient_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
