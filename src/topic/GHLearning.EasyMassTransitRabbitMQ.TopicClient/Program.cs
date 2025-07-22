@@ -1,6 +1,8 @@
 ﻿using System.Net.Mime;
 using System.Text.Json.Serialization;
 using CorrelationId;
+using GHLearning.EasyMassTransitRabbitMQ.ServiceDefaults;
+using GHLearning.EasyMassTransitRabbitMQ.ServiceDefaults.DependencyInjection;
 using GHLearning.EasyMassTransitRabbitMQ.TopicMessage;
 using MassTransit;
 using MassTransit.Logging;
@@ -101,17 +103,30 @@ builder.Services.AddOpenTelemetry()
 				!httpContext.Request.Path.StartsWithSegments("/openapi", StringComparison.OrdinalIgnoreCase) &&
 				!httpContext.Request.Path.StartsWithSegments("/scalar", StringComparison.OrdinalIgnoreCase)));
 
+// Learn more about ServiceDefaults
+builder.Services.AddServiceDefaults();
+
 //Learn more about configuring HealthChecks at https://learn.microsoft.com/zh-tw/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-9.0
 builder.Services
 	.AddHealthChecks()
 	.AddCheck("self", () => HealthCheckResult.Healthy(), ["live"])
-	.AddRabbitMQ(sp =>
+	.AddRabbitMQ(async sp =>
 	{
-		var factory = new ConnectionFactory
+		var connectionFactory = sp.GetRequiredService<IRabbitMQConnectionFactory>();
+		var connection = connectionFactory.Get("health");
+		if (connection is null)
 		{
-			Uri = new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!)
-		};
-		return factory.CreateConnectionAsync();
+			connectionFactory.Add("health", await new ConnectionFactory
+			{
+				Uri = new Uri(builder.Configuration.GetConnectionString("RabbitMQ")!),
+				ClientProvidedName = string.Concat(builder.Environment.ApplicationName, ".", "Health")
+			}
+			.CreateConnectionAsync()
+			.ConfigureAwait(false));
+			connection = connectionFactory.Get("health")!;
+		}
+
+		return connection;
 	});
 
 var app = builder.Build();

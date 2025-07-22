@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.FaultMessage", "src\fault\GHLearning.EasyMassTransitRabbitMQ.FaultMessage\GHLearning.EasyMassTransitRabbitMQ.FaultMessage.csproj", "{49C4CA07-63F9-4230-8F88-5460D2A6831A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GHLearning.EasyMassTransitRabbitMQ.ServiceDefaults", "src\GHLearning.EasyMassTransitRabbitMQ.ServiceDefaults\GHLearning.EasyMassTransitRabbitMQ.ServiceDefaults.csproj", "{980676C6-5537-4EF3-8346-542A081C65D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{49C4CA07-63F9-4230-8F88-5460D2A6831A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C4CA07-63F9-4230-8F88-5460D2A6831A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C4CA07-63F9-4230-8F88-5460D2A6831A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{980676C6-5537-4EF3-8346-542A081C65D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{980676C6-5537-4EF3-8346-542A081C65D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{980676C6-5537-4EF3-8346-542A081C65D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980676C6-5537-4EF3-8346-542A081C65D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{10877749-97AC-46F5-B347-6F855C5F3221} = {3CFDB2FB-13A9-4D48-93B4-40C1C71DC70D}
 		{ECFF9AB3-0873-41C3-B8CA-56839A9795B6} = {3CFDB2FB-13A9-4D48-93B4-40C1C71DC70D}
 		{49C4CA07-63F9-4230-8F88-5460D2A6831A} = {3CFDB2FB-13A9-4D48-93B4-40C1C71DC70D}
+		{980676C6-5537-4EF3-8346-542A081C65D7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {362334B0-557D-419D-86E5-79C8E875DBA9}
